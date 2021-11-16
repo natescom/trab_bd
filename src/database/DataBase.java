@@ -29,12 +29,41 @@ public class DataBase {
     return DriverManager.getConnection(url, usuario, senha);
   }
 
+  // insere valores em uma tabela
   public void insert(String tabela, String valores){
     String sql = "INSERT INTO " + tabela + "VALUES(" + valores + ")";
     try {
       Connection coneccao = getConnection();
       PreparedStatement pst = coneccao.prepareStatement(sql);
       pst.executeUpdate(); // executa a atualizacao
+      coneccao.close();
+    } catch (SQLException e) {
+      // Deu merda menor :c
+      e.printStackTrace();
+    }
+  }
+
+  // atualiza os valores de uma tabela, de acordo com a condicao passada pela variavel onde
+  public void update(String tabela, String mudanca, String onde){
+    String sql = "UPDATE " + tabela + " SET " + mudanca + " WHERE " + onde;
+    try {
+      Connection coneccao = getConnection();
+      PreparedStatement pst = coneccao.prepareStatement(sql);
+      pst.executeUpdate(); // executa a atualizacao
+      coneccao.close();
+    } catch (SQLException e) {
+      // Deu merda menor :c
+      e.printStackTrace();
+    }
+  }
+
+  public void delete(String tabela, String condicao){
+    String sql = "DELETE FROM " + tabela + " WHERE " + condicao;
+    try {
+      Connection coneccao = getConnection();
+      PreparedStatement pst = coneccao.prepareStatement(sql);
+      pst.executeUpdate(); // executa a atualizacao
+      coneccao.close();
     } catch (SQLException e) {
       // Deu merda menor :c
       e.printStackTrace();
@@ -66,6 +95,7 @@ public class DataBase {
       Connection coneccao = getConnection();
       PreparedStatement pst = coneccao.prepareStatement(query);
       ResultSet resultSet = pst.executeQuery();
+      coneccao.close();
       return resultSet;
     } catch (SQLException e) {
       // Deu merda menor :c
