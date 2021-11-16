@@ -1,0 +1,4 @@
+# ignora pasta com bitcodes
+/bin
+
+/*.cmd
