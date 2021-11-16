@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER">
+         <children>
+            <VBox alignment="CENTER_LEFT" maxHeight="300.0" maxWidth="300.0" prefHeight="200.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="SOMETIMES">
+               <children>
+                  <Label text="Usuário" />
+                  <TextField />
+                  <Label layoutX="10.0" layoutY="10.0" text="Senha" />
+                  <TextField layoutX="10.0" layoutY="28.0" />
+                  <HBox alignment="CENTER_RIGHT">
+                     <children>
+                        <Label text="FALHA AO LOGAR" textFill="RED" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" text="ENTRAR" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
