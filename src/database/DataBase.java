@@ -70,6 +70,12 @@ public class DataBase {
     }
   }
 
+  /*
+    O retorno precisa ser tratado na classe que deseja converter
+    
+    SUGESTAO: criar um metodo da classe
+  */
+
   public ResultSet select(String tabela){
     String query = "SELECT * FROM " + tabela;
     return selecao(query);
