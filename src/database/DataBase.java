@@ -9,16 +9,22 @@ import java.sql.SQLException;
 public class DataBase {
   private String usuario;
   private String senha;
+  private final String database_name = "bdtrab";
+  private final String table_name = "acervo";
 
   public DataBase(String usuario, String senha){
     this.usuario = usuario;
     this.senha = senha;
   }
 
+  public String getTable_name() {
+    return table_name;
+  }
+
   // SQLException deve ser tratada no controlador, ela indica que a senha ou o usuario estao errados
   // pode indicar outras coisa, sla kkkkkk
   public Connection getConnection() throws SQLException{
-    String url = "jdbc:mysql://localhost:3306/acervo";
+    String url = "jdbc:mysql://localhost:3306/"+database_name;
     String driver = "com.mysql.cj.jdbc.Driver";
     try {
       Class.forName(driver);
@@ -30,8 +36,8 @@ public class DataBase {
   }
 
   // insere valores em uma tabela
-  public void insert(String tabela, String valores){
-    String sql = "INSERT INTO " + tabela + "VALUES(" + valores + ")";
+  public void insert(String valores){
+    String sql = "INSERT INTO " + table_name + " VALUES (" + valores + ")";
     try {
       Connection coneccao = getConnection();
       PreparedStatement pst = coneccao.prepareStatement(sql);
@@ -44,8 +50,8 @@ public class DataBase {
   }
 
   // atualiza os valores de uma tabela, de acordo com a condicao passada pela variavel onde
-  public void update(String tabela, String mudanca, String onde){
-    String sql = "UPDATE " + tabela + " SET " + mudanca + " WHERE " + onde;
+  public void update(String mudanca, String onde){
+    String sql = "UPDATE " + table_name + " SET " + mudanca + " WHERE " + onde;
     try {
       Connection coneccao = getConnection();
       PreparedStatement pst = coneccao.prepareStatement(sql);
@@ -57,8 +63,20 @@ public class DataBase {
     }
   }
 
-  public void delete(String tabela, String condicao){
-    String sql = "DELETE FROM " + tabela + " WHERE " + condicao;
+  public void update(String sql){
+    try {
+      Connection coneccao = getConnection();
+      PreparedStatement pst = coneccao.prepareStatement(sql);
+      pst.executeUpdate(); // executa a atualizacao
+      coneccao.close();
+    } catch (SQLException e) {
+      // Deu merda menor :c
+      e.printStackTrace();
+    }
+  }
+
+  public void delete(String condicao){
+    String sql = "DELETE FROM " + table_name + " WHERE " + condicao;
     try {
       Connection coneccao = getConnection();
       PreparedStatement pst = coneccao.prepareStatement(sql);
@@ -76,23 +94,23 @@ public class DataBase {
     SUGESTAO: criar um metodo da classe
   */
 
-  public ResultSet select(String tabela){
-    String query = "SELECT * FROM " + tabela;
+  public ResultSet select(){
+    String query = "SELECT * FROM " + table_name;
     return selecao(query);
   }
 
-  public ResultSet select(String tabela, String colunas){
-    String query = "SELECT " + colunas + " FROM " + tabela;
+  public ResultSet select(String colunas){
+    String query = "SELECT " + colunas + " FROM " + table_name;
     return selecao(query);
   }
 
-  public ResultSet select(String tabela, String colunas, String onde){
-    String query = "SELECT " + colunas + " FROM " + tabela + " WHERE " + onde;
+  public ResultSet select(String colunas, String onde){
+    String query = "SELECT " + colunas + " FROM " + table_name + " WHERE " + onde;
     return selecao(query);
   }
 
-  public ResultSet select(String tabela, String colunas, String onde, String ordenado){
-    String query = "SELECT " + colunas + " FROM " + tabela + " WHERE " + onde + " ORDER BY " + ordenado;
+  public ResultSet select(String colunas, String onde, String ordenado){
+    String query = "SELECT " + colunas + " FROM " + table_name + " WHERE " + onde + " ORDER BY " + ordenado;
     return selecao(query);
   }
 
@@ -101,7 +119,7 @@ public class DataBase {
       Connection coneccao = getConnection();
       PreparedStatement pst = coneccao.prepareStatement(query);
       ResultSet resultSet = pst.executeQuery();
-      coneccao.close();
+      //coneccao.close();
       return resultSet;
     } catch (SQLException e) {
       // Deu merda menor :c
@@ -109,4 +127,6 @@ public class DataBase {
       return null;
     }
   }
+
+
 }

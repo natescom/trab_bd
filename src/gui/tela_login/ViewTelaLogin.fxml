@@ -7,22 +7,21 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.tela_login.ControllerTelaLogin">
    <children>
       <HBox alignment="CENTER">
          <children>
             <VBox alignment="CENTER_LEFT" maxHeight="300.0" maxWidth="300.0" prefHeight="200.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="SOMETIMES">
                <children>
                   <Label text="Usuário" />
-                  <TextField />
+                  <TextField fx:id="fd_user" />
                   <Label layoutX="10.0" layoutY="10.0" text="Senha" />
-                  <TextField layoutX="10.0" layoutY="28.0" />
+                  <TextField fx:id="fd_password" layoutX="10.0" layoutY="28.0" />
                   <HBox alignment="CENTER_RIGHT">
                      <children>
-                        <Label text="FALHA AO LOGAR" textFill="RED" />
+                        <Label fx:id="lbl_status" text="FALHA AO LOGAR" textFill="RED" />
                         <Region HBox.hgrow="ALWAYS" />
-                        <Button mnemonicParsing="false" text="ENTRAR" />
+                        <Button fx:id="btn_entrar" mnemonicParsing="false" onAction="#onClick" text="ENTRAR" />
                      </children>
                   </HBox>
                </children>
