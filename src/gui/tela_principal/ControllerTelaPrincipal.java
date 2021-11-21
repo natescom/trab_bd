@@ -38,6 +38,9 @@ public class ControllerTelaPrincipal implements Initializable {
   private ObservableList<Book> acervo;
   private DbConvert dbConvert;
 
+  public static DataBase dataBase;
+
+
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     updateTable();
@@ -53,7 +56,7 @@ public class ControllerTelaPrincipal implements Initializable {
       col_edc.setCellValueFactory(new PropertyValueFactory<BookTableConfig, String>("edicao"));
       col_vol.setCellValueFactory(new PropertyValueFactory<BookTableConfig, String>("volume"));
       col_pub.setCellValueFactory(new PropertyValueFactory<BookTableConfig, String>("ano_publicacao"));
-      DataBase dataBase = new DataBase("root","");
+      //DataBase dataBase = new DataBase("root","");
       dbConvert = new DbConvert(dataBase);
       acervo.addAll(dbConvert.getAcervo());
       tab_acervo.setItems(acervo);

@@ -9,8 +9,8 @@ import java.sql.SQLException;
 public class DataBase {
   private String usuario;
   private String senha;
-  private final String database_name = "bdtrab";
-  private final String table_name = "acervo";
+  private final String database_name = "acervo";
+  private final String table_name = "livro";
 
   public DataBase(String usuario, String senha){
     this.usuario = usuario;

@@ -22,7 +22,7 @@ public class Main extends Application {
     //loader.setController();
     Parent root = loader.load();
     Scene scene = new Scene(root, 600, 400);
-    scene.getStylesheets().add("gui/main.css");
+    //scene.getStylesheets().add("gui/main.css");
     primaryStage.setScene(scene);
     primaryStage.show();
   }

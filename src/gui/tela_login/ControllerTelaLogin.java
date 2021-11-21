@@ -1,6 +1,7 @@
 package gui.tela_login;
 
 import database.DataBase;
+import gui.tela_principal.ControllerTelaPrincipal;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -24,7 +26,7 @@ public class ControllerTelaLogin implements Initializable {
 
   public Button btn_entrar;
   public TextField fd_user;
-  public TextField fd_password;
+  public PasswordField fd_password;
   public Label lbl_status;
 
   @FXML
@@ -40,6 +42,7 @@ public class ControllerTelaLogin implements Initializable {
           DataBase dataBase = new DataBase(fd_user.getText(),fd_password.getText());
           try {
             dataBase.getConnection();
+            ControllerTelaPrincipal.dataBase = dataBase;
             stage.setUserData(dataBase);
             stage.show();
             Stage thisStage = (Stage) btn_entrar.getScene().getWindow();

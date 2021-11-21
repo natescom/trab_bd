@@ -2,12 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.tela_login.ControllerTelaLogin">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="gui.tela_login.ControllerTelaLogin">
    <children>
       <HBox alignment="CENTER">
          <children>
@@ -16,7 +17,7 @@
                   <Label text="Usuário" />
                   <TextField fx:id="fd_user" />
                   <Label layoutX="10.0" layoutY="10.0" text="Senha" />
-                  <TextField fx:id="fd_password" layoutX="10.0" layoutY="28.0" />
+                  <PasswordField fx:id="fd_password" />
                   <HBox alignment="CENTER_RIGHT">
                      <children>
                         <Label fx:id="lbl_status" text="FALHA AO LOGAR" textFill="RED" />
